@@ -1,0 +1,10 @@
+version: '3.2'
+
+services:
+  sonarqube:
+    container_name: sonarqube
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    ports:
+      - 9000:9000
+    image: sonarqube:lts-community
