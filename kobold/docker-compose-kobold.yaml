@@ -1,0 +1,12 @@
+version: '3'
+services:
+  koboldcpp:
+    container_name: kobold_chat
+    stdin_open: true
+    tty: true
+    restart: always
+    ports:
+      - 5001:5001
+    environment:
+      - KCPP_MODEL=https://huggingface.co/concedo/KobbleTinyV2-1.1B-GGUF/resolve/main/KobbleTiny-Q4_K.gguf
+    image: koboldai/koboldcpp:cu12

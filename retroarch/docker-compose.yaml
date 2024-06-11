@@ -1,0 +1,7 @@
+services:
+  emulator:
+    image: inglebard/retroarch-web
+    container_name: retroarch
+    ports:
+      - "8080:80"
+    restart: always

@@ -1,0 +1,7 @@
+services:
+  doom:
+    container_name: doomjs
+    image: callumhoughton22/doom-in-docker:0.1
+    ports:
+      - "8080:8080"
+    restart: always

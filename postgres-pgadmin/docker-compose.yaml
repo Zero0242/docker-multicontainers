@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  postgresDB:
+    container_name: postgresdb
+    ports:
+      - 5432:5432
+    image: postgres:15.1
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123456
+
+  dbPanel:
+    depends_on:
+      - postgresDB
+    container_name: pgadmin
+    ports:
+      - 8080:80
+    image: dpage/pgadmin4:6.17
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=123456
+      - PGADMIN_DEFAULT_EMAIL=test@test.cl
+
+volumes:
+  postgres-db:
+    external: true

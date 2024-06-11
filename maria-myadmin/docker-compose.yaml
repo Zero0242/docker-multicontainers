@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  mariaDB:
+    container_name: maria_db
+    ports:
+      - 3306:3306
+    image: mariadb:jammy
+    volumes:
+      - mysql_vol:/var/lib/mysql
+    environment:
+      MARIADB_USER: maria
+      MARIADB_PASSWORD: 12345
+      MARIADB_ROOT_PASSWORD: 12345
+      MARIADB_DATABASE: testdb
+
+  dbPanel:
+    depends_on:
+      - mariaDB
+    container_name: mariaPanel
+    ports:
+      - 8080:80
+    image: phpmyadmin:5.2.0-apache
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  mysql_vol:
+    external: false

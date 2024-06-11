@@ -1,0 +1,9 @@
+services:
+  beaver:
+    container_name: cloudBeaverCE
+    image: dbeaver/cloudbeaver:24.0
+    restart: always
+    volumes:
+      - ./beaver:/opt/cloudbeaver/workspace
+    ports:
+      - "8080:8978"

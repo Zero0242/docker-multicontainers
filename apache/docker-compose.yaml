@@ -1,0 +1,11 @@
+version: '3.2'
+
+services:
+  apache:
+    container_name: apache_server
+    image: httpd:2-alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/usr/local/apache2/htdocs/

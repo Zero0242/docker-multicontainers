@@ -1,0 +1,10 @@
+services:
+  node-red:
+    stdin_open: true
+    tty: true
+    ports:
+      - 1400:1880
+    volumes:
+      - ./node-red:/data
+    container_name: mynodered
+    image: nodered/node-red

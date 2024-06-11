@@ -1,0 +1,11 @@
+services:
+  koboldcpp:
+    container_name: kobold_server
+    environment:
+      - KCPP_MODEL=https://huggingface.co/concedo/KobbleTinyV2-1.1B-GGUF/resolve/main/KobbleTiny-Q4_K.gguf
+    ports:
+      - 5001:5001
+    stdin_open: true
+    tty: true
+    image: koboldai/koboldcpp:latest
+    command: /bin/bash -c "echo 'Hello World'; cat"
