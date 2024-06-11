@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./nuevo-laravel:/app
+      - ./app:/app
     depends_on:
       - mariaDB
     environment:
