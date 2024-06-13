@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mcrdotnet:
+    container_name: dotnet_playground
+    # image: mcr.microsoft.com/dotnet/framework/sdk:4.8
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    # platform: linux/amd64
+    # La bandera de -dit para entrar al contenedor
+    stdin_open: true
+    tty: true
+    # command: apk add sqlite
+    ports:
+      - "3000:3000"
+      - "5000:5000"
+      - "8000:8000"
+    volumes:
+      - "./apps:/var/opt/app"
