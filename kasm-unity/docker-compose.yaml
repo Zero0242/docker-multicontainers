@@ -1,0 +1,10 @@
+services:
+  unityhub:
+    stdin_open: true
+    tty: true
+    shm_size: 512m
+    ports:
+      - 6901:6901
+    environment:
+      - VNC_PW=password
+    image: kasmweb/unityhub:1.14.0
