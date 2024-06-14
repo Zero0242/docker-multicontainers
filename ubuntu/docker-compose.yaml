@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ubuntu:
+    container_name: ubuntu_container
+    image: ubuntu:oracular
+    # La bandera de -dit para entrar al contenedor
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+      - "5000:5000"
+      - "8000:8000"
