@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  metasploit:
+    container_name: metasploit_client
+    image: metasploitframework/metasploit-framework:6.4.0
+    # La bandera de -dit para entrar al contenedor
+    stdin_open: true
+    tty: true
+  apache:
+    container_name: apache_server_metasploit
+    image: httpd:2-alpine
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/usr/local/apache2/htdocs/

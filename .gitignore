@@ -1,3 +1,6 @@
 .env
 sql-server/
 .DS_Store
+public/
+apps/
+app/
