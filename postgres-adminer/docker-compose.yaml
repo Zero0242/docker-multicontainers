@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  database:
+    # HOST / Nombre del contenedor
+    container_name: postgres_local
+    image: postgres:15-alpine
+    restart: always
+    # PORT
+    ports:
+      - "5432:5432"
+    # Configuraciones de entorno
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: postgres
+      POSTGRES_DB: productsdb
+    # Permanencia de datos
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  adminer:
+    depends_on:
+      - database
+    container_name: adminer_web
+    image: adminer:4.8.1-standalone
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_PLUGINS: 'tables-filter tinymce dump-json dump-date dump-xml dump-zip'
+      ADMINER_DESIGN: 'dracula'
