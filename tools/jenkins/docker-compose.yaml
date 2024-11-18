@@ -1,11 +1,36 @@
 version: '3.8'
+
 services:
-  jenkins:
-    container_name: jenkins
+  jenkins_server:
+    container_name: jenkins_server
     image: jenkins/jenkins:lts
+    restart: always
     ports:
       - 8080:8080
       - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      - jenkins
 
-# NOTA: para obtener el password ejecutar lo siguiente
-# docker exec <jenkins> cat /var/jenkins_home/secrets/initialAdminPassword
+  socat:
+    container_name: socat
+    image: alpine/socat:1.8.0.0
+    restart: always
+    ports:
+      - 127.0.0.1:2376:2375
+    networks:
+      - jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
+
+networks:
+  jenkins:
+    external: true
+    name: jenkins
+
+volumes:
+  jenkins_home:
+    external: true
+    name: jenkins_home
