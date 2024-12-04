@@ -1,0 +1,16 @@
+# Imagen + direccion base
+FROM ubuntu:oracular
+WORKDIR /home/workspace
+
+# Para scripts locales
+ENV PATH="$PATH:/root/.local/bin"
+# Tema de OhMyPosh
+ARG POSH_FILE_NAME=wholespace.omp.json
+
+# Instalado updates + git + gitlab
+# Configuraciones para shell personalizada
+# Ejecutar shell
+RUN apt update && apt upgrade -y && apt install git glab gh curl unzip -y \
+    && curl -s https://ohmyposh.dev/install.sh | bash -s 
+
+RUN echo "eval \"\$(oh-my-posh init bash --config '/root/.cache/oh-my-posh/themes/${POSH_FILE_NAME}')\"" >> /root/.bashrc

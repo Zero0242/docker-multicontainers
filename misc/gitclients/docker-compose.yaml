@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  ubuntu:
+    container_name: ubuntu_container
+    image: ubuntu_server:1.0.0
+    build:
+      context: .
+      dockerfile: dockerfile
+      args:
+        POSH_FILE_NAME: ${POSH_FILE_NAME}
+    # La bandera de -dit para entrar al contenedor
+    stdin_open: true
+    tty: true
+    environment:
+      GITLAB_TOKEN: ${GITLAB_TOKEN}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    volumes:
+      - $HOME/Documents/GitHub:/home/workspace/repositories
