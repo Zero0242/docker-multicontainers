@@ -5,7 +5,7 @@ WORKDIR /home/workspace
 # Para scripts locales
 ENV PATH="$PATH:/root/.local/bin"
 # Tema de OhMyPosh
-ARG POSH_FILE_NAME=wholespace.omp.json
+ENV POSH_FILE_NAME=wholespace.omp.json
 
 # Instalado updates + git + gitlab
 # Configuraciones para shell personalizada
