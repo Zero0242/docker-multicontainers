@@ -4,13 +4,19 @@ WORKDIR /home/workspace
 
 # Para scripts locales
 ENV PATH="$PATH:/root/.local/bin"
-# Tema de OhMyPosh
-ENV POSH_FILE_NAME=wholespace.omp.json
 
-# Instalado updates + git + gitlab
+# Instalado updates + git + gitlab + nano + wget
 # Configuraciones para shell personalizada
-# Ejecutar shell
-RUN apt update && apt upgrade -y && apt install git glab gh curl unzip -y \
-    && curl -s https://ohmyposh.dev/install.sh | bash -s 
+RUN apt update && apt upgrade -y && apt install git glab gh curl unzip wget nano -y 
 
-RUN echo "eval \"\$(oh-my-posh init bash --config '/root/.cache/oh-my-posh/themes/${POSH_FILE_NAME}')\"" >> /root/.bashrc
+# Configuración Oh My Posh
+ENV POSH_FILE_NAME=wholespace.omp.json
+RUN curl -s https://ohmyposh.dev/install.sh | bash -s 
+COPY setup-shell.sh /usr/local/bin/setup-shell.sh
+RUN chmod +x /usr/local/bin/setup-shell.sh
+
+# Instalación de gdrive
+RUN wget -O gdrive.tar.gz https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_linux_arm.tar.gz && \
+    tar -xzf gdrive.tar.gz -C /usr/local/bin && \
+    chmod +x /usr/local/bin/gdrive && \
+    rm gdrive.tar.gz

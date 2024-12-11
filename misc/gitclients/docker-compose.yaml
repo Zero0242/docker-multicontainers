@@ -3,7 +3,7 @@ version: "3.8"
 services:
   ubuntu:
     container_name: ubuntu_container
-    image: ubuntu_server:1.0.0
+    image: ubuntu_devcontainer:1.0.0
     build:
       context: .
       dockerfile: dockerfile
