@@ -1,0 +1,11 @@
+services:
+  terraria:
+    stdin_open: true
+    tty: true
+    ports:
+      - 7777:7777
+    volumes:
+      - ./world:/root/.local/share/Terraria/Worlds
+    image: ryshe/terraria:latest
+    # Comando para inicializar un mundo desde 0
+    command: -world /root/.local/share/Terraria/Worlds/docker-world.wld -autocreate 3
