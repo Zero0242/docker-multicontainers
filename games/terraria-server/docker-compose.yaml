@@ -1,11 +1,12 @@
 services:
   terraria:
+    image: ryshe/terraria:latest
+    container_name: terraria-server
     stdin_open: true
     tty: true
     ports:
       - 7777:7777
     volumes:
       - ./world:/root/.local/share/Terraria/Worlds
-    image: ryshe/terraria:latest
-    # Comando para inicializar un mundo desde 0
-    command: -world /root/.local/share/Terraria/Worlds/docker-world.wld -autocreate 3
+    # Comando para inicializar un mundo desde 0. Tamaños 1 2 y 3
+    command: -world /root/.local/share/Terraria/Worlds/docker-world.wld -autocreate 2
