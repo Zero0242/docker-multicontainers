@@ -1,6 +1,6 @@
 # Terraria Server
 
-Configuracion basada en esta imagen de docker (ryshe/terraria)[https://hub.docker.com/r/ryshe/terraria/]
+Configuracion basada en esta imagen de docker (ryshe/terraria)[https://hub.docker.com/r/ryshe/terraria/], este es el script de instalacion https://get.docker.com/
 
 ## Levantar
 
