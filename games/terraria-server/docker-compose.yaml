@@ -8,5 +8,7 @@ services:
       - 7777:7777
     volumes:
       - ./world:/root/.local/share/Terraria/Worlds
+      - ./plugins:/plugins
+      - ./logs:/tshock/logs      
     # Comando para inicializar un mundo desde 0. Tamaños 1 2 y 3
     command: -world /root/.local/share/Terraria/Worlds/docker-world.wld -autocreate 2
