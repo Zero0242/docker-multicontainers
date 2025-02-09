@@ -12,7 +12,7 @@ services:
     volumes:
       - ./tf2:/home/steam/tf-dedicated/
     environment:
-      SRCDS_TOKEN: ${SERVER_MANAGER_KEy}
+      SRCDS_TOKEN: ${SERVER_MANAGER_KEY}
       SRCDS_RCONPW: ${SERVER_RCON_PASSWORD}
       SRCDS_PW: ${SERVER_PASSWORD}
       SRCDS_STARTMAP: mvm_decoy
