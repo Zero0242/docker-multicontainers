@@ -1,0 +1,19 @@
+services:
+  tf2:
+    image: cm2network/tf2:sourcemod
+    container_name: teamfortress_mvm_server
+    # Allocates a stdin (docker run -i)
+    stdin_open: true
+    # Allocates a tty (docker run -t)
+    tty: true
+    # Debe estar en modo host
+    network_mode: host
+    # Configuraciones y addons
+    volumes:
+      - ./tf2:/home/steam/tf-dedicated/
+    environment:
+      SRCDS_TOKEN: ${SERVER_MANAGER_KEy}
+      SRCDS_RCONPW: ${SERVER_RCON_PASSWORD}
+      SRCDS_PW: ${SERVER_PASSWORD}
+      SRCDS_STARTMAP: mvm_decoy
+      SRCDS_MAXPLAYERS: 32
