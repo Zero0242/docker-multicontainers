@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  pocketbase:
+    container_name: pocketbase
+    image: elestio/pocketbase
+    restart: always
+    user: 0:0
+    ports:
+      - 8090:8090
+    volumes:
+      - pocketbase_data:/pb_data
+    # environment:
+    #   EMAIL: admin_demo@email.com
+    #   ADMIN_PASSWORD: admin12345
+
+volumes:
+  pocketbase_data:
+    external: false
