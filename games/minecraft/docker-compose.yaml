@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    # Información del Juego y Carpeta de Plugins
+    volumes:
+      - ./data:/data
+      - ./plugins:/plugins
+    ports:
+      - 25565:25565
+    # Parametros acá; https://docker-minecraft-server.readthedocs.io/en/latest/variables/
+    environment:
+      EULA: "TRUE"
+      TYPE: "BUKKIT"
+      OPS: "ButterNPants"
+      ENABLE_WHITELIST: "TRUE"
+      ENFORCE_WHITELIST: "FALSE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+ 
