@@ -2,21 +2,25 @@ version: "3"
 
 services:
   minecraft:
+    container_name: minecraft
     image: itzg/minecraft-server
-    # Información del Juego y Carpeta de Plugins
-    volumes:
-      - ./data:/data
-      - ./plugins:/plugins
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
     ports:
       - 25565:25565
     # Parametros acá; https://docker-minecraft-server.readthedocs.io/en/latest/variables/
     environment:
       EULA: "TRUE"
-      TYPE: "BUKKIT"
-      OPS: "ButterNPants"
-      ENABLE_WHITELIST: "TRUE"
-      ENFORCE_WHITELIST: "FALSE"
-    tty: true
-    stdin_open: true
-    restart: unless-stopped
- 
+      MEMORY: "2G"
+      # Si no se especifica, el mensaje de inicio del servidor será el predeterminado.
+      MOTD: ${GAME_MOTD:-"Minecraft Server"}
+      # Valores disponibles: peaceful, easy, normal, hard
+      # DIFFICULTY: "normal"
+      # TYPE: "FORGE"
+      # VERSION: "1.12.2"
+      # FORGE_VERSION: "14.23.5.2854"
+    # Información del Juego y Carpeta de Plugins
+    volumes:
+      - ./data:/data
+      - ./plugins:/plugins
