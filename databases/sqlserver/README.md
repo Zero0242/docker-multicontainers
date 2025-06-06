@@ -4,6 +4,16 @@
 
 Esta es la configuracion de docker-compose.yaml para montar rapidamente la base de datos.
 
+#### TAGS:
+
+- `2022-latest` edicion 2022
+- `2019-latest` edicion 2019
+
+```bash
+# Reemplazar <tag> por un valor de abajo
+docker pull mcr.microsoft.com/mssql/server:<tag>
+```
+
 #### Azure Data Studio [Descontinuado]
 
 Programa administrador de base de datos multiplataforma y gratuito, esta disponible en [Github](https://github.com/Microsoft/azuredatastudio), es la mejor alternativa para administrar sql-server.
