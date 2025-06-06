@@ -46,7 +46,7 @@ services:
     depends_on:
       - database
     container_name: adminer_admin
-    image: adminer:4.8.1-standalone
+    image: adminer:5-standalone
     restart: unless-stopped
     ports:
       - "8001:8080"

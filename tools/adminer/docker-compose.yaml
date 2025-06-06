@@ -1,9 +1,9 @@
-version: '3'
+version: "3"
 
 services:
   adminer:
     container_name: adminerContainer
-    image: adminer:4.8.1-standalone
+    image: adminer:5-standalone
     restart: always
     ports:
       - "8080:8080"
@@ -11,5 +11,5 @@ services:
       ADM_INSTALL_MSSQL: true
       PHP_FPM_INSTALL_MSSQL: true
       WORKSPACE_INSTALL_MSSQL: true
-      ADMINER_PLUGINS: 'tables-filter tinymce dump-json dump-date dump-xml dump-zip'
-      ADMINER_DESIGN: 'dracula'
+      ADMINER_PLUGINS: "tables-filter tinymce dump-json dump-date dump-xml dump-zip"
+      ADMINER_DESIGN: "dracula"
