@@ -3,6 +3,7 @@ services:
   # * Base de datos
   # * ===============
   database:
+    # Este es el nombre del "server"
     container_name: sql_server_container
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always

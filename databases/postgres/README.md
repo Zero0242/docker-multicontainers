@@ -1,6 +1,6 @@
 # Base de datos
 
-Template para usar `postgresql` la data es persistida en la carpeta `database/`.
+Template para usar `postgresql` la data es persistida en la carpeta `database/`. Con nombre de servidor `postgres_database`
 
 # Opcion 1: solo base de datos
 

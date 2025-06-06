@@ -1,6 +1,6 @@
 # Base de datos
 
-Template para usar `mariasql` la data es persistida en la carpeta `database/`.
+Template para usar `mariasql` la data es persistida en la carpeta `database/`. Con nombre de servidor `mariadb_container`
 
 # Opcion 1: solo base de datos
 

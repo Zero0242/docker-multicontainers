@@ -1,0 +1,27 @@
+services:
+  # * ===============
+  # * Base de datos
+  # * ===============
+  database:
+    container_name: mongodb_container
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    volumes:
+      - ./database:/data/db
+  # * ===============
+  # * Panel
+  # * ===============
+  panel:
+    profiles:
+      - with_panel
+    depends_on:
+      - database
+    container_name: express_panel
+    image: mongo-express:1.0.0-alpha.4
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb_container

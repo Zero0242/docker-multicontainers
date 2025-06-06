@@ -3,12 +3,13 @@ services:
   # * Base de datos
   # * ===============
   database:
+    # Este es el nombre del "server"
     container_name: mariadb_container
     ports:
       - 3306:3306
     image: mariadb:jammy
     volumes:
-      - database:/var/lib/mysql
+      - ./database:/var/lib/mysql
     environment:
       MARIADB_USER: maria
       MARIADB_PASSWORD: 12345
@@ -44,7 +45,3 @@ services:
     environment:
       ADMINER_PLUGINS: "tables-filter tinymce dump-json dump-date dump-xml dump-zip"
       ADMINER_DESIGN: "dracula"
-
-volumes:
-  mysql_vol:
-    external: false
