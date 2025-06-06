@@ -25,3 +25,24 @@ Algunos scripts que pueden ser utilizados
 | `docker stop <contenedor>` | Detiene un contenedor          |
 | `docker rm <contenedor>`   | Elimina un contenedor          |
 | `docker rmi <imagen>`      | Elimina una imagen de Docker   |
+| `docker pull <imagen>`     | Descarga una imagen de Docker  |
+
+## Puertos Habilitados
+
+> OJO: en la sección `ports` el puerto habilitado en nuestro lado es el del lado izquierdo
+
+Ejemplo de configuración en un archivo `docker-compose.yml` para exponer el puerto 9000 del host al 80 del contenedor Nginx:
+
+```yaml
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "9000:80"
+```
+
+Con esta configuración, puedes acceder a Nginx desde tu navegador en la máquina local usando:
+
+```
+http://localhost:9000
+```
