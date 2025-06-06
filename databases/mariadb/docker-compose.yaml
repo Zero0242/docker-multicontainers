@@ -26,7 +26,7 @@ services:
     container_name: phpmyadmin_container
     ports:
       - 8080:80
-    image: phpmyadmin:5.2.0-apache
+    image: phpmyadmin:5-fpm-alpine
     environment:
       - PMA_ARBITRARY=1
   # * ===============
