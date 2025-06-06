@@ -3,31 +3,39 @@ services:
   # * Base de datos
   # * ===============
   database:
-    container_name: mariadb_container
-    ports:
-      - 3306:3306
-    image: mariadb:jammy
+    image: postgres:15-alpine
+    container_name: postgres
+    restart: unless-stopped
     volumes:
-      - database:/var/lib/mysql
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     environment:
-      MARIADB_USER: maria
-      MARIADB_PASSWORD: 12345
-      MARIADB_ROOT_PASSWORD: 12345
-      MARIADB_DATABASE: testdb
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: usuario_postgres
+      POSTGRES_DB: test_database
   # * ===============
   # * Panel de admin
   # * ===============
   panel:
     profiles:
-      - phpmyadmin
+      - pgadmin
     depends_on:
       - database
-    container_name: phpmyadmin_container
+    image: dpage/pgadmin4:6.17
+    container_name: pgadmin
+    restart: unless-stopped
     ports:
       - 8080:80
-    image: phpmyadmin:5.2.0-apache
+    # Acceso a base pgadmin
     environment:
-      - PMA_ARBITRARY=1
+      - PGADMIN_DEFAULT_PASSWORD=123456
+      - PGADMIN_DEFAULT_EMAIL=admin@postgres.com
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+      - ./pgadmin:/certs/server.cert
+      - ./pgadmin:/certs/server.key
+      - ./pgadmin:/pgadmin4/servers.json
   # * ===============
   # * Panel (alt)
   # * ===============
@@ -44,7 +52,3 @@ services:
     environment:
       ADMINER_PLUGINS: "tables-filter tinymce dump-json dump-date dump-xml dump-zip"
       ADMINER_DESIGN: "dracula"
-
-volumes:
-  mysql_vol:
-    external: false

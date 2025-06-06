@@ -1,13 +1,32 @@
 services:
-  db:
-    container_name: databaseContainer
+  # * ===============
+  # * Base de datos
+  # * ===============
+  database:
+    container_name: sql_server_container
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always
     # platform: linux/amd64
     volumes:
-      - ./sql_server:/var/opt/mssql/data/
-    ports:      
-      - '1333:1433'
+      - ./database:/var/opt/mssql/data/
+    ports:
+      - "1333:1433"
     environment:
       MSSQL_SA_PASSWORD: Admin#1234
       ACCEPT_EULA: Y
+  # * ===============
+  # * Panel (alt)
+  # * ===============
+  adminer:
+    profiles:
+      - adminer
+    depends_on:
+      - database
+    container_name: adminer_admin
+    image: adminer:4.8.1-standalone
+    restart: unless-stopped
+    ports:
+      - "8001:8080"
+    environment:
+      ADMINER_PLUGINS: "tables-filter tinymce dump-json dump-date dump-xml dump-zip"
+      ADMINER_DESIGN: "dracula"

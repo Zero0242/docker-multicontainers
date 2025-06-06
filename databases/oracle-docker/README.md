@@ -8,10 +8,6 @@ Programa administrador de base de datos multiplataforma y gratuito, esta disponi
 
 > Es muy similar a Visual Studio Code
 
-# CloudBeaver
-
-Otra solucion que soporta diferentes bases de datos, puede ser corrida mediante un contenedor de docker o buscar su version de escritorio. [documentacion](https://github.com/dbeaver/cloudbeaver/wiki/Entity-Diagrams)
-
 # Adminer
 
 Otro gestor bien ligero escrito en php, para revisar varias bases de datos. [Docs](https://dev.to/dendihandian/ms-sql-server-and-adminer-in-laradock-5a7a) e imagen [Docker](https://hub.docker.com/_/adminer)
