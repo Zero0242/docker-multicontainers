@@ -23,7 +23,7 @@ services:
       - pgadmin
     depends_on:
       - database
-    image: dpage/pgadmin4:6.17
+    image: dpage/pgadmin4:9.4
     container_name: pgadmin
     restart: unless-stopped
     ports:
