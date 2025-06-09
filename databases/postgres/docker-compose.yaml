@@ -3,7 +3,7 @@ services:
   # * Base de datos
   # * ===============
   database:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     # Equivale a nombre de servidor
     container_name: postgres_database
     restart: unless-stopped
@@ -46,7 +46,7 @@ services:
     depends_on:
       - database
     container_name: adminer_admin
-    image: adminer:5-standalone
+    image: adminer:5.3.0-standalone
     restart: unless-stopped
     ports:
       - "8001:8080"
