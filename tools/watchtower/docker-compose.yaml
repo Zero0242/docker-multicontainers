@@ -6,6 +6,8 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    # * Este path es para utilizar credenciales para repositorios privados
+    # - <path_to_custom_config.json>:/config.json
     environment:
       WATCHTOWER_POLL_INTERVAL: "300"
       WATCHTOWER_DEBUG: "true"
