@@ -1,0 +1,17 @@
+# Argumentos acá https://containrrr.dev/watchtower/arguments/
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_POLL_INTERVAL: "300"
+      WATCHTOWER_DEBUG: "true"
+      WATCHTOWER_CLEANUP: "true"
+      # Corre contenedores con labels
+      # => "com.centurylinklabs.watchtower.enable=true"
+      WATCHTOWER_LABEL_ENABLE: "true"
+      # Sin actualizar TRUE, actualizando FALSE
+      # WATCHTOWER_MONITOR_ONLY: "true"
