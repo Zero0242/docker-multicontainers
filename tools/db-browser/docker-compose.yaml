@@ -1,0 +1,17 @@
+# https://hub.docker.com/r/linuxserver/sqlitebrowser
+services:
+  sqlitebrowser:
+    restart: unless-stopped
+    image: lscr.io/linuxserver/sqlitebrowser:latest
+    container_name: sqlitebrowser
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    # security_opt:
+    #   - seccomp:unconfined #optional
+    # volumes:
+    #   - /path/to/config:/config
+    ports:
+      - 3000:3000
+      - 3001:3001
