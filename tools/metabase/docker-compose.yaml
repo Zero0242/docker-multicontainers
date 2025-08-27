@@ -1,0 +1,7 @@
+# docker run -d -p 3000:3000 --name metabase metabase/metabase:v0.55.x
+services:
+  metabase:
+    image: metabase/metabase:v0.55.x
+    container_name: metabase_container
+    ports:
+      - 3000:3000
