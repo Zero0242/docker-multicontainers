@@ -1,4 +1,5 @@
 # docker run -d -p 3000:3000 --name metabase metabase/metabase:v0.55.x
+# https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-docker#example-docker-compose-yaml-file
 services:
   metabase:
     image: metabase/metabase:v0.55.x
