@@ -4,5 +4,37 @@ services:
   metabase:
     image: metabase/metabase:v0.55.x
     container_name: metabase_container
+    restart: unless-stopped
     ports:
       - 3000:3000
+    volumes:
+      - metabase_volume:/dev/random:ro
+    # environment:
+    #   MB_DB_TYPE: mysql
+    #   MB_DB_HOST: mariadb_container
+    #   MB_DB_PORT: 3306
+    #   MB_DB_DBNAME: ${DB_NAME:-testdb}
+    #   MB_DB_USER: ${DB_USER:-maria}
+    #   MB_DB_PASS: ${DB_PASSWORD:-12345}
+
+  # * Base de Datos
+  database:
+    image: mariadb:jammy
+    container_name: mariadb_container
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    volumes:
+      - database_volume:/var/lib/mysql
+    environment:
+      MARIADB_USER: ${DB_USER:-maria}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-12345}
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:-12345}
+      MARIADB_DATABASE: ${DB_NAME:-testdb}
+
+# Volumenes
+volumes:
+  metabase_volume:
+    external: false
+  database_volume:
+    external: false
